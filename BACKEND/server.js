@@ -14,6 +14,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const URL = process.env.MONGODB_URL;
+
 /*
 const database = {
     database: process.env.MONGODB_URL,
@@ -34,6 +35,7 @@ mongoose.connection.on('erorr', (err) => {
 })
 */
 
+//connect mongodb
 mongoose.connect(URL, {
     //useCreateIndex:true,
     useNewUrlParser:true,
