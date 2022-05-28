@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 
 //schema is a template that given to the document, schema will be added to the db with the values given
 const Schema = mongoose.Schema;
+
 const userSchema = new Schema({
    
     name:{
@@ -10,7 +11,7 @@ const userSchema = new Schema({
         required : true  
     },
     mobile:{
-        type : Number,
+        type : String,
         required : true
     },
     email:{
@@ -19,6 +20,6 @@ const userSchema = new Schema({
     }
 });
 
-//User parameter is the document name
-const User = mongoose.model("User", userSchema);
+
+const User = mongoose.model("User", userSchema); //User parameter is the document(table) name
 module.exports = User;

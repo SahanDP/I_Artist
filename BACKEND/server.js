@@ -35,10 +35,11 @@ mongoose.connection.on('erorr', (err) => {
 })
 */
 
-//connect mongodb
+//connecting mongodb
+//two parameters, URL & options
 mongoose.connect(URL, {
     //useCreateIndex:true,
-    useNewUrlParser:true,
+    useNewUrlParser:true
     //useUnifiedTopologyL:true,
     //useFindAndModify:false,
     //serverApi: ServerApiVersion.v1
@@ -50,10 +51,10 @@ connection.once("open", () =>{
 });
 
 const userRouter = require("./routes/users.js");
-app.use("/user",userRouter)
+app.use("/user",userRouter); 
 
 app.listen(PORT, () =>{
-    console.log("Server is up and running on port number ${PORT}")
+    console.log("Server is up and running on port number: ",PORT)
 });
 
 

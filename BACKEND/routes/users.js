@@ -1,11 +1,12 @@
 const router = require("express").Router();
+
 let User = require("../models/User"); //must be User.js 
 
 //using post method we can insert data to the database
 router.route("/add").post((req,res) =>{
 
     const name = req.body.name;
-    const mobile = Number(req.body.mobile);
+    const mobile =req.body.mobile;
     const email = req.body.email; 
 
     const newUser = new User({
@@ -16,14 +17,15 @@ router.route("/add").post((req,res) =>{
 
     //passing the created object to the database through the model
     newUser.save().then(() =>{
-        res.json("User added")
+        res.json("User Added")
     }).catch((err) =>{
         console.log(err);
     })
 
 });
 
-router.route("/").get((req,res) =>{
+//view all data
+router.route("/display").get((req,res) =>{
     User.find().then((users) =>{
         req.json(users)
     }).catch((err) =>{
@@ -48,7 +50,7 @@ router.route("/update/:id").put(async (req, res) =>{
         res.status(200).send({status: "User updated", user:update})
     }).catch((err) =>{
         console.log(err);
-        req.status(500).send({status: "Error with updating data", error: err.message});
+        res.status(500).send({status: "Error with updating data", error: err.message});
     })
 });
 
@@ -61,9 +63,10 @@ router.route("/delete/:id").delete(async(req,res) =>{
         res.sendStatus(200).send({status: "User deleted"});
     }).catch((err) =>{
         console.log(err.message);
-        req.status(500).send({status: "Error with delete user", error: err.message});
+        res.status(500).send({status: "Error with delete user", error: err.message});
     })
 });
+
 
 
 module.exports = router;
