@@ -8,11 +8,11 @@ const userSchema = new Schema({
    
     name:{
         type : String,
-        required : true  
+        required : true  //backend validation
     },
     mobile:{
         type : String,
-        required : true
+        required : true   //backend validation
     },
     email:{
         type : String,
